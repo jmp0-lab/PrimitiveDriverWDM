@@ -1,0 +1,27 @@
+;
+; PrimitiveDriverWDM.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+DriverVer=
+CatalogFile=PrimitiveDriverWDM.cat
+
+;Setting PnPLockdown to 1 makes the Trusted Installer the owner of the driver’s 
+;executable image (.SYS file). Applications can’t delete or change the file (even rename it).
+;PnpLockdown=0 for DEBUG, PnpLockdown=1 for RELEASE
+PnpLockdown=0
+
+;This template is supported for OS version 17763 (Windows 10 version 1809) and after.
+;For Windows OS prior to Windows 10 1809 set DefaultDestDir = 12
+[DestinationDirs]
+DefaultDestDir = 13
+
+[DefaultInstall.NTamd64]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Strings]
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
